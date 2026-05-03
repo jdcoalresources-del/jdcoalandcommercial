@@ -169,3 +169,49 @@ code {
 ::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: #D4A017; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #FFD700; }
+@media (max-width: 768px) {
+
+  /* Reduce section height */
+  section {
+    padding: 30px 15px !important;
+  }
+
+  /* Fix big hero section */
+  .hero {
+    height: auto !important;
+    padding: 40px 15px !important;
+  }
+
+  /* Reduce text size */
+  h1 {
+    font-size: 26px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  /* Stack layout */
+  .container, .row {
+    flex-direction: column !important;
+  }
+
+  /* Reduce gaps */
+  .card, .box {
+    margin-bottom: 15px !important;
+  }
+
+  /* Buttons full width */
+  .btn {
+    width: 100%;
+  }
+
+  /* Remove full screen height issue */
+  .hero, .section {
+    min-height: auto !important;
+  }
+}
