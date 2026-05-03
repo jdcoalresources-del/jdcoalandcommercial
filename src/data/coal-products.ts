@@ -142,7 +142,7 @@ export const industries: Industry[] = [
 ]
 
 export const stats = [
-  { label: 'Years Experience', value: 25, suffix: '+' },
+  { label: 'Years Experience', value: 15, suffix: '+' },
   { label: 'MT Monthly Supply', value: 50000, suffix: '+' },
   { label: 'Happy Clients', value: 500, suffix: '+' },
   { label: 'States Covered', value: 15, suffix: '+' },

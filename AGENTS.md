@@ -65,7 +65,7 @@ The navbar links (Products, Industries, Contact) use `document.getElementById().
 
 ## WhatsApp Contact Number
 
-Placeholder: `+91 98765 43210` → encoded as `919876543210` in wa.me URLs. Search for `919876543210` to update it across all files.
+Placeholder: `+91 92742 23940` → encoded as `919274223940` in wa.me URLs. Search for `919274223940` to update it across all files.
 
 ## Extending the Site
 
