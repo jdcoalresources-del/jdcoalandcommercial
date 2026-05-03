@@ -311,7 +311,7 @@ function HeroSection() {
           className={`text-lg md:text-2xl font-light tracking-widest mb-4 transition-all duration-700 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ color: '#999999' }}
         >
-          trusted Coal Supplier
+          Trusted Coal Supplier
         </p>
         <p
           className={`text-base md:text-lg font-medium tracking-wide mb-12 transition-all duration-700 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
@@ -477,7 +477,7 @@ function AboutSection() {
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: '#999999' }}>
               JD Coal &amp; Commercial has been a cornerstone of India's energy supply
-              chain for over two decades. We source, procure, and deliver quality
+              chain for over decade. We source, procure, and deliver quality
               coal to industries across 15+ states, maintaining the highest standards of
               quality and reliability.
             </p>
@@ -582,7 +582,7 @@ function ProductsSection() {
             Our Products
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            reliable<span className="gold-gradient-text">Coal Products</span>
+            Reliable <span className="gold-gradient-text">Coal Products</span>
           </h2>
           <p className="text-base max-w-2xl mx-auto" style={{ color: '#666666' }}>
             We supply a comprehensive range of coal and fuel products tailored to
@@ -678,7 +678,7 @@ function ProductsSection() {
 
               {/* CTA */}
               <a
-                href="https://wa.me/919876543210?text=I%20am%20interested%20in%20enquiring%20about%20your%20coal%20products."
+                href="https://wa.me/919274223940?text=I%20am%20interested%20in%20enquiring%20about%20your%20coal%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-center py-3 rounded-xl text-sm font-bold tracking-wide transition-all duration-300"
@@ -770,9 +770,9 @@ function WhyChooseUsSection() {
   const features = [
     {
       icon: '🏅',
-      title: 'Quality Assured',
+      title: 'Trusted Name',
       description:
-        'Every batch lab-tested and certified. We maintain stringent quality control with BIS and ISO-compliant processes, giving you consistency every time.',
+        'Trusted by clients for our quality, consistency, and commitment, we ensure every delivery meets expectations and strengthens long-term business relationships..',
     },
     {
       icon: '🚚',
@@ -870,7 +870,7 @@ function ContactSection() {
     const msg = encodeURIComponent(
       `Hello JD Coal & Commercial,\n\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nProduct: ${formData.product}\nQuantity: ${formData.quantity}\nMessage: ${formData.message}`,
     )
-    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank')
+    window.open(`https://wa.me/919274223940?text=${msg}`, '_blank')
     setSubmitted(true)
   }
 
@@ -890,7 +890,7 @@ function ContactSection() {
     {
       icon: '📍',
       label: 'Address',
-      value: 'rajkot,gujarat – 360001, India',
+      value: 'Rajkot,gujarat – 360001, India',
     },
     {
       icon: '📞',
@@ -1222,10 +1222,10 @@ function Footer() {
             </div>
             <p className="text-sm leading-relaxed mb-6" style={{ color: '#555555' }}>
               India's trusted coal supplier. Quality, reliability, and
-              timely delivery since 1999.
+              timely delivery.
             </p>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919274223940"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300"
@@ -1312,7 +1312,7 @@ function Footer() {
             </h4>
             <div className="flex flex-col gap-4">
               {[
-                { icon: '📍', text: 'rajkot,gujarat – 360001' },
+                { icon: '📍', text: 'Rajkot,gujarat – 360001' },
                 { icon: '📞', text: '+91 9274223940' },
                 { icon: '✉️', text: 'info@jdcoal.in' },
                 { icon: '🕐', text: 'Mon–Sat: 9 AM – 7 PM' },
@@ -1340,7 +1340,7 @@ function Footer() {
             © 2024 JD Coal &amp; Commercial. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: '#333333' }}>
-            trusted Coal Supplier | Pan India Delivery | Est. 1999
+            Trusted Coal Supply | Pan India Delivery | Coal logistics
           </p>
         </div>
       </div>
