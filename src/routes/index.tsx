@@ -575,7 +575,6 @@ function ProductsSection() {
       >
         {/* Header */}
         <div className="text-center mb-16">
-         <img src="/logo.jpeg" alt="Logo" style={{ height: "60px" }} />
           <div
             className="text-xs font-bold tracking-widest uppercase mb-4"
             style={{ color: '#D4A017' }}
