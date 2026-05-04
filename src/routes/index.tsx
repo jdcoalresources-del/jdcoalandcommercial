@@ -575,11 +575,7 @@ function ProductsSection() {
       >
         {/* Header */}
         <div className="text-center mb-16">
-          <img 
-    src="/logo.png" 
-    alt="JD Coal Logo" 
-    className="mx-auto mb-4 h-16"
-  />
+<img src="images/logo.png" alt="Logo" height="50"></img>
           <div
             className="text-xs font-bold tracking-widest uppercase mb-4"
             style={{ color: '#D4A017' }}
