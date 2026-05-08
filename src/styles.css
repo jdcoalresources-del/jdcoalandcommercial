@@ -2,8 +2,10 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 code {
@@ -48,9 +50,9 @@ code {
 }
 
 @keyframes whatsapp-pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  0% { transform: scale(1); box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { transform: scale(1.06); box-shadow: 0 4px 30px rgba(37, 211, 102, 0.5), 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
 @keyframes particle-float {
@@ -86,7 +88,16 @@ code {
 .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
 
-.whatsapp-btn { animation: whatsapp-pulse 2s infinite; }
+.whatsapp-btn {
+  animation: whatsapp-pulse 2.5s infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.12) !important;
+  animation: none;
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6) !important;
+}
 
 .shimmer-text {
   background: linear-gradient(90deg, #D4A017 0%, #FFD700 50%, #D4A017 100%);
@@ -115,13 +126,15 @@ code {
   transform: translateY(0);
 }
 
+/* Legacy card-hover (kept for backward compat) */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(212, 160, 23, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 160, 23, 0.1);
+  border-color: rgba(212, 160, 23, 0.25) !important;
 }
 
 .coal-texture {
@@ -132,8 +145,8 @@ code {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(212, 160, 23, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 160, 23, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(212, 160, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -160,57 +173,53 @@ code {
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(212, 160, 23, 0.4);
+  background: rgba(212, 160, 23, 0.35);
   animation: particle-float linear infinite;
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #D4A017; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #FFD700; }
-@media (max-width: 768px) {
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D4A017; }
 
-  /* Reduce section height */
+/* Selection color */
+::selection {
+  background: rgba(212, 160, 23, 0.25);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
   section {
-    padding: 30px 15px !important;
+    padding: 40px 16px !important;
   }
 
-  /* Fix big hero section */
   .hero {
     height: auto !important;
-    padding: 40px 15px !important;
+    padding: 60px 16px !important;
   }
 
-  /* Reduce text size */
   h1 {
-    font-size: 26px !important;
+    font-size: 2rem !important;
+    line-height: 1.15 !important;
   }
 
   h2 {
-    font-size: 22px !important;
+    font-size: 1.6rem !important;
   }
 
   p {
-    font-size: 14px !important;
+    font-size: 0.9rem !important;
   }
 
-  /* Stack layout */
   .container, .row {
     flex-direction: column !important;
   }
 
-  /* Reduce gaps */
   .card, .box {
-    margin-bottom: 15px !important;
+    margin-bottom: 12px !important;
   }
 
-  /* Buttons full width */
-  .btn {
-    width: 100%;
-  }
-
-  /* Remove full screen height issue */
   .hero, .section {
     min-height: auto !important;
   }

@@ -107,11 +107,12 @@ function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-40 transition-all duration-500"
       style={{
-        backgroundColor: scrolled ? 'rgba(10,10,10,0.97)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(212,160,23,0.15)' : 'none',
+        backgroundColor: scrolled ? 'rgba(8,8,8,0.96)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(212,160,23,0.12)' : 'none',
+        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.4)' : 'none',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -120,12 +121,12 @@ function Navbar() {
           onClick={() => scrollTo('#home')}
           className="flex items-center gap-3 group cursor-pointer bg-transparent border-none"
         >
-          <div
-            className="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
-            style={{ background: 'linear-gradient(135deg, #D4A017, #B8860B)' }}
-          >
-            ⛏️
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="JD Coal & Commercial"
+            className="h-10 w-auto object-contain"
+            style={{ filter: 'invert(1) brightness(0.92)', maxWidth: '44px' }}
+          />
           <div className="text-left">
             <div
               className="font-black text-sm tracking-widest leading-tight"
@@ -143,19 +144,19 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer bg-transparent border-none"
-              style={{ color: '#cccccc' }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLButtonElement).style.color = '#D4A017')
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLButtonElement).style.color = '#cccccc')
-              }
-            >
-              {link.label}
-            </button>
+            key={link.href}
+            onClick={() => scrollTo(link.href)}
+            className="text-sm font-medium tracking-wide transition-all duration-200 cursor-pointer bg-transparent border-none relative group"
+            style={{ color: '#cccccc' }}
+            onMouseEnter={(e) =>
+              ((e.target as HTMLButtonElement).style.color = '#D4A017')
+            }
+            onMouseLeave={(e) =>
+              ((e.target as HTMLButtonElement).style.color = '#cccccc')
+            }
+          >
+            {link.label}
+          </button>
           ))}
           <button
             onClick={() => scrollTo('#contact')}
@@ -163,14 +164,18 @@ function Navbar() {
             style={{
               background: 'linear-gradient(135deg, #D4A017, #B8860B)',
               color: '#0a0a0a',
+              boxShadow: '0 0 20px rgba(212,160,23,0.25)',
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.transform =
-                'translateY(-2px)')
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.transform = 'none')
-            }
+            onMouseEnter={(e) => {
+              const btn = e.currentTarget as HTMLButtonElement
+              btn.style.transform = 'translateY(-2px)'
+              btn.style.boxShadow = '0 4px 24px rgba(212,160,23,0.45)'
+            }}
+            onMouseLeave={(e) => {
+              const btn = e.currentTarget as HTMLButtonElement
+              btn.style.transform = 'none'
+              btn.style.boxShadow = '0 0 20px rgba(212,160,23,0.25)'
+            }}
           >
             Get Quote
           </button>
@@ -326,17 +331,22 @@ function HeroSection() {
         >
           <button
             onClick={() => scrollTo('products')}
-            className="px-8 py-4 rounded-xl font-bold text-base tracking-wide transition-all duration-300 animate-pulse-glow"
+            className="px-8 py-4 rounded-xl font-bold text-base tracking-wide transition-all duration-300"
             style={{
               background: 'linear-gradient(135deg, #D4A017 0%, #FFD700 50%, #B8860B 100%)',
               color: '#0a0a0a',
+              boxShadow: '0 0 30px rgba(212,160,23,0.4), 0 4px 20px rgba(0,0,0,0.3)',
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-3px) scale(1.02)')
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLButtonElement).style.transform = 'none')
-            }
+            onMouseEnter={(e) => {
+              const btn = e.currentTarget as HTMLButtonElement
+              btn.style.transform = 'translateY(-3px) scale(1.02)'
+              btn.style.boxShadow = '0 0 50px rgba(212,160,23,0.6), 0 8px 30px rgba(0,0,0,0.4)'
+            }}
+            onMouseLeave={(e) => {
+              const btn = e.currentTarget as HTMLButtonElement
+              btn.style.transform = 'none'
+              btn.style.boxShadow = '0 0 30px rgba(212,160,23,0.4), 0 4px 20px rgba(0,0,0,0.3)'
+            }}
           >
             Explore Products
           </button>
@@ -487,12 +497,22 @@ function AboutSection() {
               dedicated quality control team ensures every shipment meets specification
               before dispatch.
             </p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {highlights.map((h) => (
                 <div
                   key={h.text}
-                  className="flex items-center gap-3 p-4 rounded-xl"
-                  style={{ background: '#111111', border: '1px solid #1a1a1a' }}
+                  className="flex items-center gap-3 p-4 rounded-xl transition-all duration-300"
+                  style={{ background: '#0f0f0f', border: '1px solid #1e1e1e' }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.borderColor = 'rgba(212,160,23,0.3)'
+                    el.style.background = 'rgba(212,160,23,0.04)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.borderColor = '#1e1e1e'
+                    el.style.background = '#0f0f0f'
+                  }}
                 >
                   <span className="text-xl">{h.icon}</span>
                   <span className="text-sm font-medium" style={{ color: '#cccccc' }}>
@@ -595,11 +615,23 @@ function ProductsSection() {
           {coalProducts.map((product, i) => (
             <div
               key={product.id}
-              className="card-hover relative rounded-2xl p-7 flex flex-col"
+              className="relative rounded-2xl p-7 flex flex-col transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, #111111 0%, #161616 100%)',
+                background: 'linear-gradient(145deg, #121212 0%, #161616 100%)',
                 border: '1px solid #1e1e1e',
                 animationDelay: `${i * 0.1}s`,
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(-6px)'
+                el.style.borderColor = 'rgba(212,160,23,0.3)'
+                el.style.boxShadow = '0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(212,160,23,0.1)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'none'
+                el.style.borderColor = '#1e1e1e'
+                el.style.boxShadow = 'none'
               }}
             >
               {/* Badge */}
@@ -738,11 +770,23 @@ function IndustriesSection() {
           {industries.map((industry, i) => (
             <div
               key={industry.id}
-              className="card-hover p-6 rounded-2xl text-center"
+              className="p-6 rounded-2xl text-center transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, #111111 0%, #141414 100%)',
+                background: 'linear-gradient(145deg, #111111 0%, #141414 100%)',
                 border: '1px solid #1e1e1e',
                 animationDelay: `${i * 0.08}s`,
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(-5px)'
+                el.style.borderColor = 'rgba(212,160,23,0.25)'
+                el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.35), 0 0 20px rgba(212,160,23,0.08)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'none'
+                el.style.borderColor = '#1e1e1e'
+                el.style.boxShadow = 'none'
               }}
             >
               <div
@@ -822,11 +866,23 @@ function WhyChooseUsSection() {
           {features.map((f, i) => (
             <div
               key={f.title}
-              className="card-hover p-8 rounded-2xl"
+              className="p-8 rounded-2xl transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, #111111 0%, #161616 100%)',
+                background: 'linear-gradient(145deg, #111111 0%, #161616 100%)',
                 border: '1px solid #1e1e1e',
                 animationDelay: `${i * 0.1}s`,
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(-5px)'
+                el.style.borderColor = 'rgba(212,160,23,0.25)'
+                el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.35)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'none'
+                el.style.borderColor = '#1e1e1e'
+                el.style.boxShadow = 'none'
               }}
             >
               <div
@@ -936,12 +992,20 @@ function ContactSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             {contactInfo.map((info) => (
               <div
                 key={info.label}
-                className="flex items-start gap-4 p-5 rounded-xl"
-                style={{ background: '#111111', border: '1px solid #1e1e1e' }}
+                className="flex items-start gap-4 p-5 rounded-xl transition-all duration-300"
+                style={{ background: '#0f0f0f', border: '1px solid #1e1e1e' }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement
+                  el.style.borderColor = 'rgba(212,160,23,0.2)'
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement
+                  el.style.borderColor = '#1e1e1e'
+                }}
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
@@ -987,7 +1051,7 @@ function ContactSection() {
           {/* Enquiry Form */}
           <div
             className="p-8 rounded-2xl"
-            style={{ background: '#111111', border: '1px solid #1e1e1e' }}
+            style={{ background: '#0f0f0f', border: '1px solid #1e1e1e' }}
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-16">
@@ -1166,13 +1230,18 @@ function ContactSection() {
                   style={{
                     background: 'linear-gradient(135deg, #D4A017 0%, #FFD700 50%, #B8860B 100%)',
                     color: '#0a0a0a',
+                    boxShadow: '0 0 20px rgba(212,160,23,0.3)',
                   }}
-                  onMouseEnter={(e) =>
-                    ((e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)')
-                  }
-                  onMouseLeave={(e) =>
-                    ((e.currentTarget as HTMLButtonElement).style.transform = 'none')
-                  }
+                  onMouseEnter={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement
+                    btn.style.transform = 'translateY(-2px)'
+                    btn.style.boxShadow = '0 4px 30px rgba(212,160,23,0.5)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const btn = e.currentTarget as HTMLButtonElement
+                    btn.style.transform = 'none'
+                    btn.style.boxShadow = '0 0 20px rgba(212,160,23,0.3)'
+                  }}
                 >
                   Send Enquiry via WhatsApp
                 </button>
@@ -1202,12 +1271,12 @@ function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
-                style={{ background: 'linear-gradient(135deg, #D4A017, #B8860B)' }}
-              >
-                ⛏️
-              </div>
+              <img
+                src="/logo.jpeg"
+                alt="JD Coal & Commercial"
+                className="h-10 w-auto object-contain"
+                style={{ filter: 'invert(1) brightness(0.92)', maxWidth: '44px' }}
+              />
               <div>
                 <div
                   className="font-black text-sm tracking-widest"
@@ -1220,22 +1289,10 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: '#555555' }}>
+            <p className="text-sm leading-relaxed" style={{ color: '#555555' }}>
               India's trusted coal supplier. Quality, reliability, and
               timely delivery.
             </p>
-            <a
-              href="https://wa.me/919274223940"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="fixed bottom-5 right-5 z-[9999] inline-flex items-center justify-center w-12 h-12 rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
-              style={{ background: '#25D366', color: '#ffffff' }}
-            >
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
-  <circle cx="16" cy="16" r="16" fill="#25D366"/>
-  <path d="M21.86 10.14a7.076 7.076 0 0 0-12.096 7.049L8 24l6.964-1.729a7.075 7.075 0 0 0 6.896-12.131zm-6.13 9.583-4.144 1.029 1.082-4.079a5.573 5.573 0 1 1 3.062 3.05zm4.036-2.011-.593.592c-.288.288-.587.315-.948.185-.815-.296-2.093-.913-3.164-2.069-.893-.92-1.423-1.741-1.734-2.309-.18-.324-.064-.627.19-.879l.589-.59a.674.674 0 0 1 .689-.182c.185.059.57.236.817.493.119.122.294.414.361.573.109.26.044.5-.088.681l-.268.37a.254.254 0 0 0 .037.327 7.124 7.124 0 0 0 1.42 1.429.25.25 0 0 0 .323.039l.336-.223a.707.707 0 0 1 .706-.093c.151.06.438.244.56.37.189.196.193.479.067.686z" fill="#fff"/>
-</svg>
-            </a>
           </div>
 
           {/* Quick Links */}
@@ -1337,7 +1394,7 @@ function Footer() {
           style={{ borderTop: '1px solid #111111' }}
         >
           <p className="text-xs" style={{ color: '#333333' }}>
-            © 2024 JD Coal &amp; Commercial. All rights reserved.
+            © 2025 JD Coal &amp; Commercial. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: '#333333' }}>
             Trusted Coal Supply | Pan India Delivery | Coal logistics
